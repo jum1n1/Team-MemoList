@@ -16,29 +16,62 @@ public class Memojang {
 
             switch (choice) {
                 case 1:
-                    createMemo(scanner);
+                    Scanner sc = new Scanner(System.in);
+                    System.out.println(" < 메 모 장 > ");
+                    System.out.println("");
+                    System.out.println("이름을 입력해 주세요:");
+                    System.out.print(">> ");
+                    String userID = sc.nextLine();
+                    System.out.println(" 비밀번호를 입력해 주세요: ");
+                    System.out.print(">> ");
+                    int userPassword = sc.nextInt();
+                    sc.nextLine();
+                    System.out.println("작성할 메모를 입력해 주세요: ");
+                    System.out.print(">> ");
+                    String content = sc.nextLine();
                     break;
+
                 case 2:
                     showMemoList();
                     break;
+
                 case 3:
-                    System.out.println("수정할 메모의 인덱스를 입력하세요:");
+                    System.out.println("["+ " 메모 수정 " +"]");
+                    System.out.println("수정할 메모의 인덱스를 입력해 주세요:");
                     System.out.print(">> ");
                     int index = scanner.nextInt();
-                    System.out.println("비밀번호를 입력하세요:");
+                    sc.nextLine();
+                    System.out.println("비밀번호를 입력해 주세요:");
                     System.out.print(">> ");
                     String password = scanner.next();
-                    System.out.println("새로운 내용을 입력하세요:");
+                    System.out.println("새로운 내용을 입력해 주세요:");
                     System.out.print(">> ");
                     scanner.nextLine();
                     String newContent = scanner.nextLine();
                     memoList.modifyMemo(index, password, newContent);
                     break;
+
                 case 4:
+                    public static void delete() {
+                    Scanner sc = new Scanner(System.in);
+
+                    System.out.println("["+ " 메모 삭제 " +"]");
+                    System.out.println("삭제할 메모의 인덱스를 입력해 주세요.");
+                    int index = scanner.nextInt();
+                    sc.next();
+
+                    for (int i=0; i<memoList.size(); i++) {
+                        if(memoList.get(i).getNumber().equals((number))) {
+                            memoList.remove(i)
+                        }
+                    }
+
                     break;
+
                 case 5:
                     isRunning = false;
                     break;
+
                 default:
                     System.out.println("잘못된 선택입니다.");
                     break;
@@ -50,13 +83,13 @@ public class Memojang {
     }
 
     private static void createMemo(Scanner scanner) {
-        System.out.println("이름을 입력하세요:");
+        System.out.println("이름을 입력해 주세요:");
         System.out.print(">> ");
         String name = scanner.next();
-        System.out.println("비밀번호를 입력하세요:");
+        System.out.println("비밀번호를 입력해 주세요:");
         System.out.print(">> ");
         String password = scanner.next();
-        System.out.println("내용을 입력하세요:");
+        System.out.println("내용을 입력해 주세요:");
         System.out.print(">> ");
         scanner.nextLine();
         String content = scanner.nextLine();
