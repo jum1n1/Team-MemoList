@@ -1,20 +1,26 @@
-package problem.MemoList;
+package problem.MemoList.memo;
+import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
+import java.util.Date;
 
 public class Memo {
     private int index;
     private String name;
     private String password;
     private String content;
-    private LocalDateTime time;
+    private String time;
 
+    public Memo(){}
 
-    public Memo(int index, String name, String password, String content, LocalDateTime time) {
+    public Memo(int index, String name, String password, String content) {
         this.index = index;
         this.name = name;
         this.password = password;
         this.content = content;
-        this.time = time;
+
+        Date date = new Date();
+        SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
+        this.time = formatter.format(date);
     }
 
     public int getIndex() {
@@ -49,11 +55,19 @@ public class Memo {
         this.content = content;
     }
 
-    public LocalDateTime getTimestamp() {
-        return time;
+    public String getTimestamp() {
+        return this.time;
     }
 
-    public void setTimestamp(LocalDateTime timestamp) {
+    public void setTimestamp(String timestamp) {
         this.time = timestamp;
+    }
+    public void resetTimestamp() {
+        Date date = new Date();
+        SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
+        this.time = formatter.format(date);
+    }
+
+    public void setTimestamp(LocalDateTime now) {
     }
 }
