@@ -8,6 +8,7 @@ public class Memo {
     private String content;
     private LocalDateTime time;
 
+
     public Memo(int index, String name, String password, String content, LocalDateTime time) {
         this.index = index;
         this.name = name;
