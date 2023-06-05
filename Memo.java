@@ -1,10 +1,9 @@
-package problem.MemoList;
 import java.time.LocalDateTime;
 
 public class Memo {
-    private int index;
-    private String name;
-    private String password;
+    private int index; // 글 key(id) 값
+    private String name; // 글 작성자 이름
+    private String password; // 글 작성한 사람의 패스워드
     private String content;
     private LocalDateTime time;
 
