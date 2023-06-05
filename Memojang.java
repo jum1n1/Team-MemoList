@@ -1,3 +1,7 @@
+import java.util.Scanner;
+import java.time.LocalDateTime;
+import java.util.*;
+
 public class Memojang {
     private static MemoList memoList = new MemoList();
 
@@ -7,6 +11,7 @@ public class Memojang {
 
         do {
             System.out.println("1. 입력, 2. 목록 보기, 3. 수정, 4. 삭제, 5. 종료");
+            System.out.print(">> ");
             int choice = scanner.nextInt();
 
             switch (choice) {
@@ -18,14 +23,15 @@ public class Memojang {
                     break;
                 case 3:
                     System.out.println("수정할 메모의 인덱스를 입력하세요:");
-                    System.out.print(">> ")
+                    System.out.print(">> ");
                     int index = scanner.nextInt();
                     System.out.println("비밀번호를 입력하세요:");
-                    System.out.print(">> ")
+                    System.out.print(">> ");
                     String password = scanner.next();
                     System.out.println("새로운 내용을 입력하세요:");
-                    System.out.print(">> ")
-                    String newContent = scanner.next();
+                    System.out.print(">> ");
+                    scanner.nextLine();
+                    String newContent = scanner.nextLine();
                     memoList.modifyMemo(index, password, newContent);
                     break;
                 case 4:
@@ -45,13 +51,17 @@ public class Memojang {
 
     private static void createMemo(Scanner scanner) {
         System.out.println("이름을 입력하세요:");
+        System.out.print(">> ");
         String name = scanner.next();
         System.out.println("비밀번호를 입력하세요:");
+        System.out.print(">> ");
         String password = scanner.next();
         System.out.println("내용을 입력하세요:");
-        String content = scanner.next();
+        System.out.print(">> ");
+        scanner.nextLine();
+        String content = scanner.nextLine();
 
-        Memo memo = new Memo(name, password, content);
+        Memo memo = new Memo(0, name, password, content, LocalDateTime.now());
         memoList.addMemo(memo);
 
         System.out.println("메모가 작성되었습니다.");
@@ -62,14 +72,14 @@ public class Memojang {
         if (memos.isEmpty()) {
             System.out.println("메모가 없습니다.");
         } else {
+            System.out.println("-------------------");
             for (Memo memo : memos) {
-                System.out.println("제목: " + memo.getName());
-                System.out.println("작성자: " + memo.getPassword());
-                System.out.println("내용: " + memo.getContent());
-                System.out.println("작성일: " + memo.getTimestamp());
+                System.out.println("인덱스 : " + memo.getIndex());
+                System.out.println("제목 : " + memo.getName());
+                System.out.println("내용 : " + memo.getContent());
+                System.out.println("작성일 : " + memo.getTimestamp());
                 System.out.println("-------------------");
             }
         }
     }
 }
-
